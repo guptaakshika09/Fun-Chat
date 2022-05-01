@@ -1,48 +1,69 @@
 var models = require('../model/model.js');
 var path = require('path');
 var bodyParser = require('body-parser');
-
+// const flash = require('connect-flash');
+// const session = require('express-session');
 
 
 module.exports = function (app,io){
+    // //Express Session
+    // app.use(session({
+    //     secret : 'secret',
+    //     resave: true,
+    //     saveUninitialized : true
+    // }));
+    // //Connect flash
+    // app.use(flash());
+
+    // //Global Variables
+    // app.use(function(req,res,next){
+    //     res.locals.success_msg = req.flash('success_msg');
+    //     res.locals.error_msg = req.flash('error_msg');
+    //     res.locals.error = req.flash('error');
+    //     next();
+    // })
+
     app.use( bodyParser.json() );
     app.use(bodyParser.urlencoded({     
         extended: true
     }));
+    // app.set('view engine', 'ejs');
     
     app.get('/',function(req,res){
         res.sendFile(path.resolve(__dirname+"/../views/index.html"));
     });
+
     
-    app.post('/register',function(req,res){
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Access-Control-Allow-Method","'GET, POST, OPTIONS, PUT, PATCH, DELETE'");
-        var user={
-            "name":req.body.name,
-            "handle":req.body.handle,
-            "password":req.body.password,
-            "phone":req.body.phone,
-            "email":req.body.email,
-        };
-        console.log(user);
+    
+    // app.post('/register',function(req,res){
+    //     res.setHeader('Access-Control-Allow-Origin', '*');
+    //     res.setHeader("Access-Control-Allow-Method","'GET, POST, OPTIONS, PUT, PATCH, DELETE'");
+
+    //     var user={
+    //         "name":req.body.name,
+    //         "handle":req.body.handle,
+    //         "password":req.body.password,
+    //         "email":req.body.email,
+    //     };
+    //     console.log(user);
         
-        models.user.findOne({"handle":req.body.handle},function(err,doc){
-            if(err){
-                res.json(err); 
-            }
-            if(doc == null){
-                models.user.create(user,function(err,doc){
-                    if(err) res.json(err);
-                    else{
-                        res.send("success");
-                    }
-                });
-            }else{
-                res.send("User already found");
-            }
-        })
+    //     models.user.findOne({"handle":req.body.handle},function(err,doc){
+    //         if(err){
+    //             res.json(err); 
+    //         }
+    //         if(doc == null){
+    //             models.user.create(user,function(err,doc){
+    //                 if(err) res.json(err);
+    //                 else{
+    //                     res.send("success");
+    //                 }
+    //             });
+    //         }else{
+    //             res.send("User already found");
+    //         }
+    //     })
         
-    });
+    // });
     
     
     var handle=null;
@@ -51,7 +72,7 @@ module.exports = function (app,io){
     var keys={};
     
     app.post('/login',function(req,res){
-        console.log(req.body.handle);
+        console.log(req.body);
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader("Access-Control-Allow-Method","'GET, POST, OPTIONS, PUT, PATCH, DELETE'");
         handle = req.body.handle;

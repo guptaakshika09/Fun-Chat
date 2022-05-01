@@ -24,7 +24,9 @@
                     Login</button>
                 <div class="form-group pull-left"><a href="#">Forgot Password?</a>
                 </div>
-                <div class="form-group pull-right">Not a member?<a href="#" data-toggle="modal" data-target="#myModal">Register</a>
+                <div class="form-group pull-right">Not a member?<a href="/register">Register</a>
+                    <!-- <a href="#" data-toggle="modal" data-target="#myModal">Register</a> -->
+                    
                 </div>
             </form>
         </div>
@@ -87,16 +89,19 @@ Handle:<br>
                         <input type="password" class="form-control" id="psw" placeholder="Enter password" ng-model="user.password">
                     </div>
                     <div class="form-group">
+                        <label for="password2"><span class="glyphicon glyphicon-eye-open"></span>Confirm Password</label>
+                        <input type="password" class="form-control" id="psw2" placeholder="Confirm password" ng-model="user.password2">
+                    </div>
+                    <div class="form-group">
                         <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
                         <input type="text" class="form-control" id="email" placeholder="Enter Email" ng-model="user.email">
                     </div>
-                    <div class="form-group">
-                        <label for="phone"><span class="glyphicon glyphicon-phone"></span> Phone</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Enter Phone number" ng-model="user.phone">
-                    </div>
+                    
 
                     <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" ng-click="Register()"><span class="glyphicon glyphicon-off"></span>
                         Register</button>
+
+                    
                 </form>
             </div>
             <!--

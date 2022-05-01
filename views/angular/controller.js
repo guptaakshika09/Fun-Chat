@@ -459,7 +459,7 @@ app.controller('registerController',['$scope','encrypt','$http','$state',functio
     };
 
     $scope.Register = function(){
-        $scope.user.password=encrypt.hash($scope.user.password);
+        // $scope.user.password=encrypt.hash($scope.user.password);
 
         $http({method: 'POST',url:'http://'+url+'/register', data:$scope.user})//, headers:config})
             .success(function (data) {
@@ -473,7 +473,7 @@ app.controller('registerController',['$scope','encrypt','$http','$state',functio
 
     $scope.login = function(){
         console.log("login");
-        $scope.login_data.password=encrypt.hash($scope.login_data.password);
+        // $scope.login_data.password=encrypt.hash($scope.login_data.password);
         console.log($scope.login_data);
         $http({ method: 'POST', url:'http://'+url+'/login', data:$scope.login_data })//, headers:config})
             .success(function (data) {
