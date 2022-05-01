@@ -341,7 +341,7 @@ else {
 
 require("./controller/controller.js")(app,io);
 
-http.listen(8080,function(){
+http.listen(process.env.PORT || 8080,function(){
     console.log("Node Server is setup and it is listening on http://"+ip.address()+":8080");
 })
 
