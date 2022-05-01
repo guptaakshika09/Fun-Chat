@@ -1,38 +1,37 @@
-<nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
-    </div>
-</nav>
-<div class="container center text-center">
-    <div class="container inner_container">
-        <div class="row text-center Absolute-Cente is-Responsive">
-            <div class="page-header">
-                <h1>CHAT</h1>
-            </div>
-            <form>
-                <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input class="form-control" type="text" name='handle' placeholder="handle" ng-model="login_data.handle"/> 
+<br>
+<br>
+<br>
+<div class="login">
+    <div class="container">
+        <div class="parentlogin">
+            <form> 
+                <div class="title">
+                    <h1>Signin</h1>
                 </div>
-                <div class="form-group input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input class="form-control" type="password" name='password' placeholder="password" ng-model="login_data.password" my-enter="login()"/>     
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="" checked>Remember me</label>
-                </div>
-                <button type="button" class="btn btn-primary btn-block" ng-click="login()"><span class="glyphicon glyphicon-off"></span>
-                    Login</button>
-                <div class="form-group pull-left"><a href="#">Forgot Password?</a>
-                </div>
-                <div class="form-group pull-right">Not a member?<a href="/register">Register</a>
-                    <!-- <a href="#" data-toggle="modal" data-target="#myModal">Register</a> -->
-                    
+                <label class="label" for="name">Username</label>
+                <input type="text" name='handle' placeholder="handle" ng-model="login_data.handle"/>
+                <label class="label" for="password">Password</label>
+                <input type="password" name='password' placeholder="password" ng-model="login_data.password" my-enter="login()"/>
+                <input type="submit" class="submit" value="Sign In" ng-click="login()"> 
+                <div class="extra">
+                    <div class="checkbox">
+                    <label><input type="checkbox" checked /> Remember me</label>
+                    </div>
+                    <!-- <div class="forget">
+                    <a href="#">Forgot Password</a>
+                    </div> -->
                 </div>
             </form>
         </div>
-    </div>
-</div>
-
+        <div class="parentdesc">
+            <div class="description">
+                <h2>Welcome To Fun Chat</h2>
+                <p>Don't have an account?</p>
+                <a href="/register">Sign Up</a>
+            </div>
+          </div>
+    </div> 
+ </div>
 
 <!--
 <div class="container text-center center">
@@ -101,6 +100,7 @@ Handle:<br>
                     <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" ng-click="Register()"><span class="glyphicon glyphicon-off"></span>
                         Register</button>
 
+                    
                     
                 </form>
             </div>

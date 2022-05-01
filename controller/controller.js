@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 // const flash = require('connect-flash');
 // const session = require('express-session');
-
+const https = require('https');
 
 module.exports = function (app,io){
     // //Express Session
@@ -27,10 +27,25 @@ module.exports = function (app,io){
     app.use(bodyParser.urlencoded({     
         extended: true
     }));
-    // app.set('view engine', 'ejs');
-    
+     //app.set('view engine', 'ejs');
+     const JokeAPI = require('sv443-joke-api');
     app.get('/',function(req,res){
+        //url="https://v2.jokeapi.dev/joke/Programming,Miscellaneous?blacklistFlags=nsfw,racist,sexist&format=json&type=single";
+        
+        // https.get(url, (resp) => {
+        //     const joke=resp;
+        //     console.log(joke);
+        // //res.render(path.resolve(__dirname+"/../views/index.html"),{joke:joke});
+        // res.render("index",{joke:joke});
+        // }).on("error", (err) => {
+        //     console.log("Error: " + err.message);
+        //     res.render("index",{joke:joke});
+        // });
+
+        //res.render("index",{joke:("ji")});
+        //<p> Joke to make you smile - <%= joke %></p>
         res.sendFile(path.resolve(__dirname+"/../views/index.html"));
+
     });
 
     

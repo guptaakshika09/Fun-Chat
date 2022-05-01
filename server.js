@@ -231,6 +231,114 @@ else {
 }
 })
 
+// app.get('/forgot',function(req,res){
+//     res.render("forgot");
+// })
+
+// app.post('/forgot',function (req,res) {
+//     const { email } = req.body;
+    
+
+//     let errors = [];
+
+//     //------------ Checking required fields ------------//
+//     if (!email) {
+//         errors.push({ msg: 'Please enter an email ID' });
+//     }
+
+//     if (errors.length > 0) {
+//         res.render('forgot', {
+//             errors,
+//             email
+//         });
+//     } else {
+        
+//         models.user.findOne({ email: email }).then(async user => {
+//             if (!user) {
+//                 //------------ User dosent exists ------------//
+//                 errors.push({ msg: 'User with Email ID does not exist!' });
+//                 res.render('forgot', {
+//                     errors,
+//                     email
+//                 });
+//             } else {
+
+//                 const oauth2Client = new OAuth2(
+//                     "751925798347-d3qfuovr7bg3ikbjt8fdfi70pq7an7gf.apps.googleusercontent.com", // ClientID
+//                     "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", // Client Secret
+//                     "https://developers.google.com/oauthplayground" // Redirect URL
+//                 );
+                
+//                 oauth2Client.setCredentials({
+//                     refresh_token: "1//0gJKG-JJMN4XFCgYIARAAGBASNwF-l9IrXXT2U3h0eLNSQsa8RwehRXrLzTtzPtG5npHN8ZELvsmOlKpTEIJhonZvGgFxRElJe0U"
+//                 });
+//                 const accessToken = await oauth2Client.getAccessToken()
+                
+//                 const token = jwt.sign({ _id: user._id }, JWT_RESET_KEY, { expiresIn: '30m' });
+//                 res.send(accessToken );
+//                 const CLIENT_URL = 'http://' + req.headers.host;
+//                 const output = `
+//                 <h2>Please click on below link to reset your account password</h2>
+//                 <p>${CLIENT_URL}/users/forgot/${token}</p>
+//                 <p><b>NOTE: </b> The activation link expires in 30 minutes.</p>
+//                 `;
+
+//                 models.user.updateOne({ resetLink: token }, (err, success) => {
+//                     if (err) {
+//                         errors.push({ msg: 'Error resetting password!' });
+//                         res.render('forgot', {
+//                             errors,
+//                             email
+//                         });
+//                     }
+//                     else {
+//                         const transporter = nodemailer.createTransport({
+//                             service: 'gmail',
+//                             auth: {
+//                                 type: "OAuth2",
+//                                 user: "iitjforumhelp@gmail.com",
+//                                 clientId: "751925798347-d3qfuovr7bg3ikbjt8fdfi70pq7an7gf.apps.googleusercontent.com",
+//                                 clientSecret: "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",
+//                                 refreshToken: "1//0gJKG-JJMN4XFCgYIARAAGBASNwF-l9IrXXT2U3h0eLNSQsa8RwehRXrLzTtzPtG5npHN8ZELvsmOlKpTEIJhonZvGgFxRElJe0U",
+//                                 accessToken: accessToken
+//                             },
+//                         });
+
+//                         // send mail with defined transport object
+//                         const mailOptions = {
+//                             from: '"Auth Admin" <iitjforumhelp@gmail.com>', // sender address
+//                             to: email, // list of receivers
+//                             subject: "Account Password Reset: NodeJS Auth ✔", // Subject line
+//                             html: output, // html body
+//                         };
+
+//                         transporter.sendMail(mailOptions, (error, info) => {
+//                             if (error) {
+//                                 console.log(error);
+//                                 req.flash(
+//                                     'error_msg',
+//                                     'Something went wrong on our end. Please try again later.'
+//                                 );
+//                                 res.redirect('/forgot');
+//                             }
+//                             else {
+//                                 console.log('Mail sent : %s', info.response);
+//                                 req.flash(
+//                                     'success_msg',
+//                                     'Password reset link sent to email ID. Please follow the instructions.'
+//                                 );
+//                                 res.redirect('/login');
+//                             }
+//                         })
+//                     }
+//                 })
+//             }
+//         });
+//     }
+// });
+
+
+
 require("./controller/controller.js")(app,io);
 
 http.listen(8080,function(){
